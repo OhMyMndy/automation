@@ -1,0 +1,22 @@
+#cloud-config
+
+package_update: true
+package_upgrade: true
+password: Passw0rd
+ssh_pwauth: true
+chpasswd:
+  expire: false
+
+# Sizes of Gnome desktop packages on Ubuntu 22.04
+#
+# Package name              Size    Size --no-install-recommends
+# ============================================================
+# ubuntu-desktop-minimal    1909MB  980MB
+# ubuntu-desktop            2632MB  980MB
+# gnome-session             1122MB  601MB
+
+packages:
+  - gnome-session
+  - nautilus
+  - gnome-terminal
+  - xrdp
