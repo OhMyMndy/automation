@@ -1,0 +1,16 @@
+- name: Install ZSH
+  ansible.builtin.package:
+    name: zsh
+    state: present
+  become: true
+- name: Install fzf
+  ansible.builtin.package:
+    name: fzf
+    state: present
+  become: true
+- name: Ensure /etc/profile sh emulation for ZSH
+  ansible.builtin.lineinfile:
+    path: /etc/zsh/zprofile
+    regexp: "^emulate sh.*/etc/profile"
+    line: emulate sh -c 'source /etc/profile'
+  become: true

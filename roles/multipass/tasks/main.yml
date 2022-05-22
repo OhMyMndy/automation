@@ -1,0 +1,11 @@
+
+- name: Install Multipass
+  community.general.snap:
+    name: multipass
+  become: true
+- name: Install libvirt
+  ansible.builtin.import_role: 
+    name: libvirt
+- name: Connect to libvirt
+  ansible.builtin.shell:
+    cmd: sudo snap connect multipass:libvirt

@@ -1,0 +1,5 @@
+- name: Install libbirt
+  ansible.builtin.package:
+    name: virt-manager
+    state: present
+  become: true
