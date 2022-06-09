@@ -6,7 +6,18 @@ password: Passw0rd
 ssh_pwauth: true
 chpasswd:
   expire: false
-
+users:
+  # - name: root
+  #   lock_passwd: false
+  #   # shell: /bin/bash
+  #   chpasswd: { expire: False }
+  #   plain_text_passwd: Passw0rd
+  - name: mandy
+    sudo: ALL=(ALL) NOPASSWD:ALL
+    lock_passwd: false
+    shell: /bin/bash
+    chpasswd: { expire: False }
+    plain_text_passwd: Passw0rd
 # Sizes of Gnome desktop packages on Ubuntu 22.04
 #
 # Package name              Size    Size --no-install-recommends

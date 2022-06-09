@@ -1,9 +1,11 @@
 #cloud-config
 
-# package_update: true
-# package_upgrade: true
+package_update: true
+package_upgrade: true
+password: Passw0rd
 ssh_pwauth: true
-debug: true
+chpasswd:
+  expire: false
 users:
   # - name: root
   #   lock_passwd: false
@@ -16,5 +18,11 @@ users:
     shell: /bin/bash
     chpasswd: { expire: False }
     plain_text_passwd: Passw0rd
+
 packages:
   - sudo
+  - fuse-overlayfs
+
+runcmd:
+  # https://rootlesscontaine.rs/
+  - curl -sfL https://get.k3s.io | sh - --rootless
