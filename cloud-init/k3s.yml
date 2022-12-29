@@ -18,16 +18,11 @@ users:
     shell: /bin/bash
     chpasswd: { expire: False }
     plain_text_passwd: Passw0rd
-# Sizes of Gnome desktop packages on Ubuntu 22.04
-#
-# Package name              Size    Size --no-install-recommends
-# ============================================================
-# ubuntu-desktop-minimal    1909MB  980MB
-# ubuntu-desktop            2632MB  980MB
-# gnome-session             1122MB  601MB
 
 packages:
-  - gnome-session
-  - nautilus
-  - gnome-terminal
-  - xrdp
+  - sudo
+  - fuse-overlayfs
+
+runcmd:
+  # https://rootlesscontaine.rs/
+  - curl -sfL https://get.k3s.io | sh - --rootless
