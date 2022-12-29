@@ -1,0 +1,19 @@
+#cloud-config
+
+package_update: true
+package_upgrade: true
+
+runcmd:
+  - apt-get install software-properties-common gpg-agent curl -y -qq --no-install-recommends
+  - curl -fsSL https://deb.nodesource.com/setup_current.x | bash -
+  - apt-get install -y -qq --no-install-recommends nodejs
+  - add-apt-repository ppa:neovim-ppa/stable -y
+  - apt-get update -qq
+  - apt-get install git neovim build-essential unzip fzf golang python3-pip ripgrep fd-find exuberant-ctags -y -qq --no-install-recommends
+
+  # - mkdir -p /home/ubuntu/.config/nvim
+  # - curl -sL https://raw.githubusercontent.com/nvim-lua/kickstart.nvim/master/init.lua | tee /home/ubuntu/.config/nvim/init.lua >/dev/null
+  # - chown ubuntu:ubuntu -R /home/ubuntu/.config/nvim
+
+packages:
+  - curl

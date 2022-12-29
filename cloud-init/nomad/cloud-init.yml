@@ -1,0 +1,16 @@
+#cloud-config
+
+package_update: true
+package_upgrade: true
+
+runcmd:
+  - curl -sL https://raw.githubusercontent.com/wimpysworld/deb-get/main/deb-get | bash -s install deb-get
+  - deb-get install docker-ce nomad
+  - systemctl enable --now docker
+  - systemctl enable --now nomad
+
+  - usermod -aG docker ubuntu
+
+
+packages:
+  - curl

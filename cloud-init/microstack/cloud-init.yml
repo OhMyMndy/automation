@@ -1,0 +1,10 @@
+#cloud-config
+
+package_update: true
+package_upgrade: true
+
+runcmd:
+  - snap install microstack --beta --classic
+  - microstack init --auto --control
+  # get password
+  # - snap get microstack config.credentials.keystone-password
